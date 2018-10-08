@@ -1,21 +1,28 @@
 <div class="container">
 
-  <div class="article">
-    <div class="row">
-    <div class="col s12 m6">
-      {{#each articles}}
-        <div class="card #eceff1 blue-grey lighten-5">
-          <div class="card-content white-text">
-            <span class="card-title">{{this.title}}</span>
-            <p>{{this.summary}}</p>
+  <div class="wrapper">
+
+    <div id="article">
+      <div class="row">
+      <div class="col s12 m8">
+        {{#each articles}}
+          <div class="card #546e7a blue-grey darken-1">
+            <div class="card-content white-text" data-id="{{this._id}}">
+              <span class="card-title">{{this.title}}</span>
+              <hr>
+              <p class="summary">{{this.summary}}</p>
+            </div>
+            <div class="card-action #cfd8dc blue-grey lighten-4">
+              <a href="www.espn.com" + "{{this.link}}" target="_blank" style="color: blue">Click here to read more!</a>
+            </div>
           </div>
-          <div class="card-action blue-grey darken-1">
-            <a href="{{this.link}}">Click here to read more!</a>
-          </div>
-        </div>
-      {{/each}}
+        {{/each}}
+      </div>
+      </div>
     </div>
-    </div>
+
+    <div id="note"></div>
+
   </div>
 
 </div>
