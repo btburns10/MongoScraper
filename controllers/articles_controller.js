@@ -4,10 +4,6 @@ const db = require("../models");
 
 module.exports = function(app) {
 
-app.get("/home", function(req, res) {
-  res.redirect("/articles");
-});
-
 app.get("/scrape", function(req, res) {
 
   axios.get("http://www.espn.com/fantasy/football/").then(function(response) {
@@ -31,31 +27,26 @@ app.get("/scrape", function(req, res) {
         summary: summary
       });
 
-      //call the create method on our Article schema to add scraped article to mongo db
-      db.Article.create(articles)
-        .then(function(dbArticle) {
-          console.log(dbArticle);
-        })
-        .catch(function(err) {
-          return res.json(err);
-        });
+     
     });
-    //send back response if scrape was successful
-    res.send("scrape complete");
+    //render articles array with index handlebars
+    res.render("index", {articles: articles});
   });
 });
 
-app.get("/articles", function(req, res) {
-  //grab all items from the 'articles' collection
-  db.Article.find({})
-    .then(function(dbArticle) {
-      //render index handlebars with collected data
-      res.render("index", {articles: dbArticle});
-    })
-    .catch(function(err) {
-      return res.json(err);
-    });
+app.post("/articles/saved", function(req, res) {
+  //create new article schema for saved article requested from client side
+  db.Article.create(req.body)
+  .then(function(dbArticle) {
+    console.log(dbArticle);
+    return res.json({"saved article": dbArticle});
+  })
+  .catch(function(err) {
+    return res.json(err);
+  });
+
 });
+
 
   
 }
