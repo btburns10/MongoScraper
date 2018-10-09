@@ -34,6 +34,18 @@ app.get("/scrape", function(req, res) {
   });
 });
 
+app.get("/articles/saved", function(req, res) {
+  //pull all saved articles from the collections named 'articles'
+  db.Article.find({})
+    .then(function(dbArticles) {
+      dbArticles.layout = "saved-layout";
+      return res.render("saved", {savedArticles: dbArticles});
+    })
+    .catch(function(err) {
+      return res.json(err);
+    });
+});
+
 app.post("/articles/saved", function(req, res) {
   //create new article schema for saved article requested from client side
   db.Article.create(req.body)

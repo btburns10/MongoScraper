@@ -1,5 +1,23 @@
-.wrapper {
-  display: flex;
+.nav-wrapper a {
+  font-size: 40px;
+}
+
+.fas {
+  font-size: 44px;
+}
+
+#nav-mobile a {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+#nav-mobile .btn {
+  font-size: 18px;
+  font-weight: normal;
+}
+
+.card-content p {
+  font-size: 18px;
 }
 
 .card-action {
@@ -9,4 +27,12 @@
 #saveBtn {
   position: relative;
   float: right;
+}
+
+.grow { 
+  transition: all .2s ease-in-out;
+}
+
+.grow:hover {
+  transform: scale(1.1);
 }
