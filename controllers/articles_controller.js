@@ -38,8 +38,9 @@ app.get("/articles/saved", function(req, res) {
   //pull all saved articles from the collections named 'articles'
   db.Article.find({})
     .then(function(dbArticles) {
+      dbArticles.savedArticles = dbArticles;
       dbArticles.layout = "saved-layout";
-      return res.render("saved", {savedArticles: dbArticles});
+      return res.render("saved", dbArticles);
     })
     .catch(function(err) {
       return res.json(err);

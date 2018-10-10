@@ -18,6 +18,7 @@ mongoose.connect("mongodb://localhost/fantasydb", { useNewUrlParser: true });
 
 //run our server side route controllers with Express
 require("./controllers/articles_controller.js")(app);
+require("./controllers/saved_controller.js")(app);
 
 
 app.listen(PORT, function() {

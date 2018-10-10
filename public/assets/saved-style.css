@@ -1,0 +1,34 @@
+.container {
+  width: 85%;
+}
+
+.nav-wrapper a {
+  font-size: 50px;
+}
+
+#nav-mobile a {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.card-content p {
+  font-size: 18px;
+}
+
+.card-action {
+  overflow: auto;
+}
+
+button {
+  position: relative;
+  float: right;
+}
+
+#noteBtn {
+  margin-right: 8px;
+}

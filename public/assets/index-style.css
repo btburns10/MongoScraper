@@ -24,7 +24,7 @@
   overflow: auto;
 }
 
-#saveBtn {
+button {
   position: relative;
   float: right;
 }

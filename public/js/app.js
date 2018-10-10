@@ -1,14 +1,5 @@
 $(function() {
 
-$(document).on("click", ".card-content", function() {
-
-    $("#notes").empty();
-    console.log("event bubbling worked!");
-    console.log($(this));
-
-
-});
-
 $(document).on("click", "#saveBtn", function() {
 
     var title = $(this).parent().parent().find("span").text();
