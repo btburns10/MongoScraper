@@ -14,20 +14,38 @@ $(document).on("click", "#noteBtn", function() {
     .then(function(data) {
       console.log(data);
       $("#notes").append("<h2>" + data.title + "</h2>");
-      $("#notes").append("<input id='titleinput' name='title' >");
+      $("#notes").append("<input id='titleinput' name='title' placeholder='title'>");
       $("#notes").append("<textarea id='bodyinput' name='body'></textarea>");
-      $("#notes").append("<button data-id='" + data._id + "' id='savenote'>Save Note</button>");
+      $("#notes").append("<button data-id='" + data._id + "' id='saveNote'>Save Note</button>");
 
       if (data.note) {
-        // Place the title of the note in the title input
         $("#titleinput").val(data.note.title);
-        // Place the body of the note in the body textarea
         $("#bodyinput").val(data.note.body);
       }
     });
 
 });
 
+$(document).on("click", "#saveNote", function() {
+  
+  var thisId = $(this).attr("data-id");
+
+  $.ajax({
+    method: "POST",
+    url: "/articles/saved/" + thisId,
+    data: {
+      title: $("#titleinput").val(),
+      body: $("#bodyinput").val()
+    }
+  })
+    .then(function(data) {
+      console.log(data);
+      $("#notes").empty();
+    });
+
+  $("#titleinput").val("");
+  $("#bodyinput").val("");
+});
 
 
 });
