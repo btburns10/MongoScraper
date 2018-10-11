@@ -4,8 +4,8 @@ $(document).on("click", "#noteBtn", function() {
   
   $("#notes").empty();
 
-  var thisId = $(this).parent().parent().parent().find(".card-content").attr("data-id");
-  
+  var thisId = $(this).attr("data-id");
+ 
   $.ajax({
     method: "GET",
     url: "/articles/saved/" + thisId
