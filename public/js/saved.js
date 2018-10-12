@@ -71,7 +71,7 @@ $(document).on("click", "#deleteBtn", function() {
     url: "/articles/saved/" + thisId
     })
     .then(function(data) {
-      console.log(data);
+      location.reload();
       $("#notes").empty();
     });
 

@@ -31,9 +31,14 @@ app.post("/articles/saved/:id", function(req, res) {
 app.delete("/articles/saved/:id", function(req, res) {
 
   db.Article.deleteOne({ _id: req.params.id })
-    .populate("note")
     .then(function(deletedArticle) {
-      res.json(deletedArticle);
+      db.Note.deleteOne({ _id: deletedArticle.note })
+        .then(function(deletedNote) {
+          res.json({"successfully deleted docs": {deletedArticle, deletedNote}});
+        })
+        .catch(function(err) {
+          res.json(err);
+        });
     })
     .catch(function(err) {
       res.json(err);

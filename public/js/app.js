@@ -1,7 +1,7 @@
 $(function() {
 
 $(document).on("click", "#saveBtn", function() {
-
+    var targetArticle = $(this);
     var title = $(this).parent().parent().find("span").text();
     var summary = $(this).parent().parent().find("p").text();
     var link = $(this).parent().find("a").attr("href");
@@ -17,6 +17,7 @@ $(document).on("click", "#saveBtn", function() {
     })
     .then(function(data) {
         console.log(data);
+        targetArticle.html("Saved");
     });
 });
 
