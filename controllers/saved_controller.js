@@ -28,4 +28,16 @@ app.post("/articles/saved/:id", function(req, res) {
     });
 });
 
+app.delete("/articles/saved/:id", function(req, res) {
+
+  db.Article.deleteOne({ _id: req.params.id })
+    .populate("note")
+    .then(function(deletedArticle) {
+      res.json(deletedArticle);
+    })
+    .catch(function(err) {
+      res.json(err);
+    });
+});
+
 }

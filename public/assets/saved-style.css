@@ -1,5 +1,6 @@
-.container {
-  width: 85%;
+.wrapper {
+  margin: 0 auto;
+  width: 90%;
 }
 
 .nav-wrapper a {
