@@ -1,9 +1,8 @@
 const express = require("express");
 const mongoose = require("mongoose");
 
-//save express instance to constant 'app'
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
@@ -14,7 +13,12 @@ var exphbs = require("express-handlebars");
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-mongoose.connect("mongodb://localhost/fantasydb", { useNewUrlParser: true });
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/fantasydb";
+
+mongoose.connect(MONGODB_URI);
+
+
+// mongoose.connect("mongodb://localhost/fantasydb", { useNewUrlParser: true });
 
 //run our server side route controllers with Express
 require("./controllers/articles_controller.js")(app);

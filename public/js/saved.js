@@ -47,5 +47,20 @@ $(document).on("click", "#saveNote", function() {
   $("#bodyinput").val("");
 });
 
+$(document).on("click", "deleteBtn", function() {
+  
+  var thisId = $(this).attr("data-id");
+  
+  $.ajax({
+    method: "DELETE",
+    url: "/articles/saved/" + thisId
+    })
+    .then(function(data) {
+      console.log(data);
+      $("#notes").empty();
+    });
+
+});
+
 
 });
