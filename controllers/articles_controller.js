@@ -4,7 +4,7 @@ const db = require("../models");
 
 module.exports = function(app) {
 
-app.get("/scrape", function(req, res) {
+app.get("/", function(req, res) {
 
   axios.get("http://www.espn.com/fantasy/football/").then(function(response) {
 
